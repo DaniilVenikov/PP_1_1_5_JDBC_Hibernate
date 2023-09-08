@@ -9,33 +9,32 @@ import org.hibernate.service.UnknownServiceException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    private final UserDao userDao;
+
+    public UserServiceImpl() {
+        userDao = new UserDaoHibernateImpl();
+    }
     public void createUsersTable() {
-        UserDao userDao = new UserDaoHibernateImpl();
         userDao.createUsersTable();
     }
 
     public void dropUsersTable() {
-        UserDao userDao = new UserDaoHibernateImpl();
         userDao.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        UserDao userDao = new UserDaoHibernateImpl();
         userDao.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
-        UserDao userDao = new UserDaoHibernateImpl();
         userDao.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        UserDao userDao = new UserDaoHibernateImpl();
         return userDao.getAllUsers();
     }
 
     public void cleanUsersTable() {
-        UserDao userDao = new UserDaoHibernateImpl();
         userDao.cleanUsersTable();
     }
 }
